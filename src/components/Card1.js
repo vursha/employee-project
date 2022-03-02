@@ -16,7 +16,7 @@ import{useSelector} from 'react-redux';
     console.log(emp)
     return(
         <div>
-               <h1>Employee Details</h1>
+               <h1>Employee Detail</h1>
                {employee.map((employ)=>{
                    if(employ.fullName===emp.fullName){
                        return(
