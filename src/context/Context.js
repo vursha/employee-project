@@ -67,7 +67,47 @@ export const Context=(props)=>{
                             country:"India"
                           },
                         
-  ]);
+          ]);
+
+           const [Attendance,setAttendance]=useState([
+             {
+              id: 101,
+              fullName: "JennyChan",
+              Position: "Trainee",
+              CheckIn : "9:30",
+              CheckOut : "6:30"
+             },
+             
+              {
+                id: 102,
+                fullName: "Jessicawarren",
+                Position: "Developer",
+                CheckIn : "9:30",
+                CheckOut : "6:30"
+               },
+               {
+                id: 103,
+                fullName: "TonyFrank",
+                Position: "Trainee",
+                CheckIn : "9:30",
+                CheckOut : "6:30"
+               },
+               {
+                id: 104,
+                fullName: "JeremyClark",
+                Position: "Developer",
+                CheckIn : "9:30",
+                CheckOut : "6:30"
+               },
+               {
+                id:105,
+                fullName: "RaymondEdwards",
+                Position: "Trainee",
+                CheckIn : "9:30",
+                CheckOut : "6:30"
+               },
+             
+           ])
               const[state,dispatch]=useReducer(empReducer,{
                 employees:employee,
                 emp:[]
@@ -91,7 +131,7 @@ export const Context=(props)=>{
      
       <Emp.Provider value={{errors,setErrors,password,setpassword,email,setEmail,employee,setEmployee,
         empstate,empdispatch,state,dispatch, Search,setSearch,ascending,setAscending,descending,
-        setDescending,errorsObj,view,setView}}>
+        setDescending,errorsObj,view,setView,Attendance,setAttendance}}>
         {props.children}
       </Emp.Provider>
     </div>

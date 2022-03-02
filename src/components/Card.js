@@ -18,6 +18,7 @@ const Card = () => {
     const[name,setName]=useState('');
     const[Id,setId]=useState();
     useEffect(()=>{
+        
         let temp=employee.filter((obj)=> obj.fullName.toLowerCase() === email.toLowerCase())
         setlocalEmp(temp)
         console.log(localEmp)
@@ -56,7 +57,8 @@ const Card = () => {
     }
     return(
         <div >
-        <Navbar.Brand><h1 style={{textAlign:"center"}}>Employee Page <Button onClick={() => handlelogout()} 
+        <Navbar.Brand><h1 style={{textAlign:"center"}}>Employee Page 
+        <Button onClick={() => handlelogout()} 
        style={{float:'right', marginRight:'30px', marginTop:'10px'}}>Logout</Button>
        
        </h1></Navbar.Brand>

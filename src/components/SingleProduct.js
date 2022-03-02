@@ -1,19 +1,21 @@
-import React, { useContext,useState,useEffect }  from 'react';
+import React, { useContext,useState,useEffect ,}  from 'react';
 import axios from 'axios';
 import {Emp, EmpState} from '../context/Context';
 import {Table,Button} from 'react-bootstrap';
-//import {Link}from 'react-router-dom';
-
+import { useNavigate} from 'react-router-dom';
+import {Link}from 'react-router-dom';
+import {useDispatch} from 'react-redux'
 
 
 const SingleProduct=(empl)=>{
+    let dispatch=useDispatch()
      const{
          state:{emp},
         // empstate:{sort,ascending,search,descending},
-         dispatch,
+         //dispatch,
      }=EmpState();
-     console.log(emp);
-
+     //console.log(emp);
+     //let navigate=useNavigate()
    
      
     
@@ -78,6 +80,10 @@ useEffect(()=>{
         else return posts
         console.log(posts)
     },[ascending,descending])
+
+    // const handleClick=()=>{
+    //     navigate("/card1")
+    // }
          
     
     
@@ -115,10 +121,15 @@ useEffect(()=>{
                        
                        <td>
                            
-                          {/* <Link to = '/card'> <Button 
-                              
-                          type='submit' className="btn btn-primary" >View</Button></Link> */}
-                          {emp.some((e)=>e.id===empl.id)?(<Button 
+                          {emp.some((e)=>e.id===empl.id)}<Link to = '/card1'> <Button
+                          onClick={()=>{
+                            dispatch({
+                                type:'viewed',
+                                payload:empl,
+                            });
+                        }}
+                           type='submit' className="btn btn-primary" >View</Button></Link>
+                          {/* {emp.some((e)=>e.id===empl.id)?<Link to='/card1'>(<Button 
                           onClick={()=>{
                               dispatch({
                                   type:'viewed',
@@ -130,7 +141,9 @@ useEffect(()=>{
                                   type:'view more',
                                   payload:empl,
                               })
-                          }}>View More</Button>)}
+                          }}>View More</Button>)</Link>} */}
+
+                          {/* <Button onClick={handleClick()}>View More</Button> */}
                            
                        </td>
                     </tr>

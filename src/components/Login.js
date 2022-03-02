@@ -102,7 +102,7 @@ function SignUp(props){
                     </div>
                     <div className="my-3">
                         <Button type='submit'
-                         className="bg-green-700 text-white px-3 py-1">Sign Up</Button>
+                         className="bg-green-700 text-white px-3 py-1">Sign In</Button>
                         
                     </div>
                 </form>
