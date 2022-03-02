@@ -74,37 +74,42 @@ export const Context=(props)=>{
               id: 101,
               fullName: "JennyChan",
               Position: "Trainee",
-              CheckIn : "9:30",
-              CheckOut : "6:30"
+              CheckIn : "",
+              CheckOut : "",
+              TotalTime:""
              },
              
               {
                 id: 102,
                 fullName: "Jessicawarren",
                 Position: "Developer",
-                CheckIn : "9:30",
-                CheckOut : "6:30"
+                CheckIn : "",
+                CheckOut : "",
+                TotalTime:""
                },
                {
                 id: 103,
                 fullName: "TonyFrank",
                 Position: "Trainee",
-                CheckIn : "9:30",
-                CheckOut : "6:30"
+                CheckIn : "",
+                CheckOut : "",
+                TotalTime:""
                },
                {
                 id: 104,
                 fullName: "JeremyClark",
                 Position: "Developer",
-                CheckIn : "9:30",
-                CheckOut : "6:30"
+                CheckIn : "",
+                CheckOut : "",
+                TotalTime:""
                },
                {
                 id:105,
                 fullName: "RaymondEdwards",
                 Position: "Trainee",
-                CheckIn : "9:30",
-                CheckOut : "6:30"
+                CheckIn : "",
+                CheckOut : "", 
+                TotalTime:""
                },
              
            ])

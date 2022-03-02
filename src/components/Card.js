@@ -3,6 +3,7 @@ import { EmpState, Emp } from "../context/Context";
 import './style.css';
 import {FormCheck,Button,Navbar,Row,Col,Container,Stack} from 'react-bootstrap';
 import {  useNavigate } from "react-router-dom";
+import moment from "moment";
 
 
 
@@ -13,8 +14,9 @@ const Card = () => {
     console.log(emp)
     // const[enable,setEnable]=useState(false);
     console.log(new Date())
-    const{employee,setEmployee,email }=useContext(Emp)
+    const{employee,setEmployee,email,Attendance,setAttendance }=useContext(Emp)
     const[localEmp,setlocalEmp]=useState([])
+    const[localAttend,setLocalAttend]=useState([])
     const[name,setName]=useState('');
     const[Id,setId]=useState();
     useEffect(()=>{
@@ -30,18 +32,27 @@ const Card = () => {
                 )
             }
         })
+        Attendance.map((obj)=>{
+            if( obj.fullName.toLowerCase() === email.toLowerCase()){
+                return(
+                    setLocalAttend([obj])
+                   
+                )
+            }
+        })
 
     },[])
-    
+    console.log(localAttend)
    
     const handleChange=(id)=>{
-        
+         let login
         const update=employee.map((obj)=>{
             
             if(obj.id===id){
                 console.log(obj.enable)
                 let msg = !(obj.enable) ? `Checked In` : `Checked Out`
                 alert(msg)
+                login=obj.enable
                obj={...obj,
                 enable: !obj.enable,
             } 
@@ -49,12 +60,49 @@ const Card = () => {
              return obj;
         })
         setEmployee(update)
+        if(login===false){
+            const check=localAttend.map((obj)=>{
+            
+                if(obj.id===id){
+                    console.log(obj)
+                    obj={...obj,
+                        // CheckIn : moment().format("h:mm a"),
+                        CheckIn :'12:00 am',
 
-         console.log(update)
+                    } 
+                 }
+                 return obj;
+            })
+            setLocalAttend(check)
+        }
+        else  if(login===true){
+            let Total
+            const check=localAttend.map((obj)=>{
+            
+                if(obj.id===id){
+                    console.log(obj)
+                    let Time= moment().format("h:mm a")
+                    let start=moment((obj.CheckIn),'h:mm a');
+                    let end=moment(Time,"h:mm a");
+                    let Diff=end.diff(start,'hour');
+                    console.log(Diff,'Diff')
+                    console.log(start,'start')
+                    console.log(end,'end')
+                    obj={...obj,
+                        CheckOut: moment().format("h:mm a"),
+                        TotalTime:Diff,
+                    } 
+                 }
+                 return obj;
+            })
+            setLocalAttend(check)
+        }
+        console.log(update)
 }
     const handlelogout=()=>{
         navigate("/")
     }
+    console.log(localAttend)
     return(
         <div >
         <Navbar.Brand><h1 style={{textAlign:"center"}}>Employee Page 
